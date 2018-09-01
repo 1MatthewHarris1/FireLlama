@@ -1,4 +1,5 @@
 import os
+import platform
 
 class Window:
 
@@ -10,11 +11,17 @@ class Window:
 		self.text = text
 		self.clearing = clearing
 
+		if platform.system() == 'Windows':
+			self.clear_str = 'cls'
+		else:
+			self.clear_str = 'clear'
+
+
 	def display(self):
 
 		if self.clearing == True:
 			print('screen should clear')
-			os.system('clear')
+			os.system(self.clear_str)
 
 		if self.length == None:
 			self.length = len(self.text)
